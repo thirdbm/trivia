@@ -53,7 +53,6 @@ void draw(){
     line(arcPoints[i].x, arcPoints[i].y, arcPoints[targetIdx].x, arcPoints[targetIdx].y);
   }  
   
-  textSize(12);
   textSize(20);
   text(COUNT + " points, " + MULTIPLY + "x", 4, 20); 
   
