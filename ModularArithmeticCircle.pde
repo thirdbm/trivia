@@ -4,14 +4,14 @@
 // 0 : ColorMode = 0
 // 1 : ColorMode = 1
 
-static final float RADIUS = 360;
+static final float RADIUS = 300;
 int MULTIPLY = 2;
 int COUNT = 180;
 float t;
 int COLORMODE = 0;
 
 void setup(){
-  size(800,800);
+  size(620,620);
 }
 
 void draw(){
@@ -47,15 +47,13 @@ void draw(){
       float g = abs(sin(t / 60) * 255 - ((255 / COUNT) * i));
       float b = abs(sin(t / 90) * 255 - ((255 / COUNT) * i));
       stroke(r, g, b, 160);
-      strokeWeight(2);
     }
     
     line(arcPoints[i].x, arcPoints[i].y, arcPoints[targetIdx].x, arcPoints[targetIdx].y);
   }  
   
-  textSize(20);
-  text(COUNT + " points, " + MULTIPLY + "x", 4, 20); 
-  
+  textSize(14);
+  text(COUNT + " points, " + MULTIPLY + "x", 4, 16);
   t += 1;
 }
 
@@ -65,27 +63,18 @@ void keyPressed(){
 }
 
 void mousePressed(){
-  if(mouseButton==LEFT){
-     if(MULTIPLY > 0) MULTIPLY--;
-   }
-   else if(mouseButton==RIGHT){
-     MULTIPLY++;
-   }   
+  if(mouseButton==LEFT) { if(MULTIPLY > 0) MULTIPLY--; } 
+  else if(mouseButton==RIGHT) { MULTIPLY++; }
+     
    redraw();
-   
-   println(COUNT + " points, " + MULTIPLY + "x");
 }
 
 void mouseWheel(MouseEvent event){
   float e = event.getCount();
-  if(e < 0){
-    if(COUNT < 360) COUNT++;
-  } else {
-    if(COUNT > 4) COUNT--;
-  }
+  if(e < 0) { if(COUNT < 360) COUNT++; }
+  else { if(COUNT > 4) COUNT--; }
+    
   redraw();
-  
-  println(COUNT + " points, " + MULTIPLY + "x");
 }
 
 class arcPoint{
